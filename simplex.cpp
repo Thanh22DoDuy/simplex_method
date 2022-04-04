@@ -13,12 +13,12 @@ using namespace std;
 
 #define size 100
 
-int status;
-vector<vector<double>> a;
+int status;  // xet dieu kien output
+vector<vector<double>> a;  // vecto luu cac chi so
 vector<double> b, c, ct, sga, x;
-vector<int> eql;
+vector<int> eql;  // vecto luu dau cau bai toan
 vector<size_t> ar_id, base_id;
-size_t st_num, x_num, x_num_, min_max;
+size_t st_num, x_num, x_num_, min_max; // so rang buoc, so bien 'x', ..., lua chon output ham muc tieu
 size_t add_num=0, ba_num=0, ar_num=0;
 size_t step = 1, section = 1, count = 1;
 size_t in, out, inputMathod;
@@ -29,7 +29,7 @@ double z=0;
 void inPut() {
 
     while(1) {
-        cout << "Ban lua chon: 1->max, 2->min:(1/2)";
+        cout << "Ban lua chon: 1->max, 2->min - (1/2): ";
         cin >> min_max;
         if (min_max!=1 && min_max!=2){
             cout << "Dau vao sai! Vui long chon lai." << endl;
@@ -38,21 +38,21 @@ void inPut() {
     }
 
     while(1) {
-        cout << "So bien x:";
+        cout << "\n***So bien x:";
         cin >> x_num;
-        cout << "Nhap c1~c" << x_num << ":" << endl;
+        cout << "--Nhap c[1]~c[" << x_num << "]: " << endl;
         for (size_t i=0; i<x_num; ++i) {
-            cout << "c" << i+1 << " = ";
+            cout << "\tc" << i+1 << " = ";
             double c_;
             cin >> c_;
-            c.push_back(c_);
+            c.push_back(c_);  // them gia tri vao c
         }
 
         if (min_max==1){
-        	cout << "max z = ";
+        	cout << "**Max z = ";
 		}
         else{
-        	cout << "min z = ";
+        	cout << "**Min z = ";
 		}
 
         if (c[0]==1){
@@ -80,7 +80,7 @@ void inPut() {
         }
         cout << "\t";
         
-		a1: cout << "Ket qua nhap da dung?:(y/n)";
+		a1: cout << "\tKet qua nhap chinh xac? - (y/n): ";
 		
         char yn;
         cin >> yn;
@@ -91,22 +91,24 @@ void inPut() {
         	continue;
 		}
         else {
-            cout << "Dau vao loi!" << endl;
+            cout << "\tDau vao loi!" << endl;
             goto a1;
         }
     }
 
-    cout << "So rang buoc: ";
+    cout << "\n***So rang buoc: ";
     cin  >> st_num;
+    // reset kich thuoc cac vecto
     eql.resize(size);
     b.resize(size);
     base_id.resize(size);
     ar_id.resize(size);
-
+    
+    // lua chon dau cho rang buoc
     for (size_t i=0; i<st_num; ++i) {
-        cout << "Rang buoc thu: " << i+1 << ":" << endl;
+        cout << "--Rang buoc thu: " << i+1 << ":" << endl;
         while (1) {
-            cout << "Chon dau: 1?==; 2?>=, 3?<= :(1/2/3)";
+            cout << "+++Chon dau: 1: ==; 2: >=, 3: <= || (1/2/3): ";
             cin >> eql[i];
             if(eql[i]!=1 && eql[i]!=2 && eql[i]!=3){
             	cout << "Dau vao sai! Vui long chon lai." << endl;
@@ -114,18 +116,20 @@ void inPut() {
             else break;
         }
 
-        cout << "Input a: " << endl;
+		// nhap he so rang buoc
+        cout << "--Input a: " << endl;
         vector<double> a_(x_num);
         for (size_t j=0; j<x_num; ++j) {
-            cout << "a" << j+1 << " = ";
+            cout << "\ta" << j+1 << " = ";
             cin >> a_[j];
         }
         a.push_back(a_);
-
-        cout << "Input b: " << endl;
-        cout << "b" << i+1 << " = ";
+		
+		// nhap gia tri rang buoc
+        cout << "--Input b: " << endl;
+        cout << "\tb" << i+1 << " = ";
         cin >> b[i];
-        cout << "st." << i+1 << ": ";
+        cout << "St." << i+1 << ": ";
         if (a[i][0]==1){
         	cout << "x[1]";
 		}
@@ -166,7 +170,7 @@ void inPut() {
 
         while (1) {
             cout << "\t" ;
-            cout << "Du lieu nhap da dung?:(y/n)";
+            cout << "*** Du lieu nhap chinh xac? - (y/n): ";
             char yn;
             cin >> yn;
             if (yn == 'y'){
@@ -766,7 +770,7 @@ void dataClear() {
 
 int main()
 {
-    while (1) {
+    /*while (1) {
         cout << "Lua chon : 1.Su dung du lieu da co.\t 2.Nhap du lieu cua ban (1/2)";
         cin >> inputMathod;
         if (inputMathod==1 || inputMathod==2){
@@ -784,9 +788,9 @@ int main()
             cout << "Khong mo duoc file du lieu." << endl;
             exit(0);
         }
-    }
+    }*/
 
-    while (inputMathod) {
+    /*while (inputMathod) {
 
         if (inputMathod == 2){
         	inPut();
@@ -813,7 +817,25 @@ int main()
 				else return 0;
             }
             cout << endl << "Data" << dataCount++ << " : ";
+        }*/
+        
+        /*size_t st = 0;
+        while (1) {
+            cout << "Lua chon : 1.Nhap du lieu\t 2.Dung (1/2)  ";
+            cin >> st ;
+            if (st!=1 && st!=2) {
+                cout << "Dau vao sai! Vui long chon dung lua chon." << endl;
+                continue;
+            } 
+			else  break;
         }
+        if (st == 1) {
+            inputMathod = 2;
+            continue;
+        } 
+		else return 0;*/
+		
+		inPut();
 
         showOr();
 
@@ -874,7 +896,7 @@ int main()
             cout << "Iteration time out" << endl;
             break;
         }
-        size_t st = 0;
+        /*size_t st = 0;
         while (1) {
             cout << "Lua chon : 1.Thuc hien bai toan tiep\t 2.Dung (1/2)  ";
             cin >> st ;
@@ -889,8 +911,7 @@ int main()
             continue;
         }
         else return 0;
-
-    }
+    }*/
 
     return 0;
 }
